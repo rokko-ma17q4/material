@@ -12,7 +12,7 @@ output:
       countIncrementalSlides: no
       highlightLines: yes
       highlightStyle: github
-subtitle: Macroeconomics (2017Q2)
+subtitle: Macroeconomics (2017Q4)
 header-includes: <script src="https://use.fontawesome.com/b5f301ecca.js"></script>
 ---
 
