@@ -1,0 +1,217 @@
+---
+title: "Ramsey Model: Complete Description"
+author: "Kenji Sato"
+date: '2018-01-15'
+output:
+  xaringan::moon_reader:
+    mathjax: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    css: 
+      - "../asset/remark-css/style.css"
+    lib_dir: libs
+    nature:
+      countIncrementalSlides: no
+      highlightLines: yes
+      highlightStyle: github
+    pandoc_args: [
+      "--include-before-body", "../asset/mathjax-macro.md"
+    ]
+subtitle: Macroeconomics (2017Q4)
+header-includes: <script src="https://use.fontawesome.com/b5f301ecca.js"></script>
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+source("../R/utils.R")
+library(tidyverse)
+```
+
+<div style="margin-top: -2em"></div>
+
+## Exogenous variables
+
+Population growth
+
+$$\dot{L} = n L$$
+
+Technical growth
+
+$$\dot{A} = g A$$
+
+---
+
+`r section("consumers")`
+
+---
+
+## Consumer Behavior: Objective
+
+Consumers act altruistically. They care not only about 
+their own consumption but also about offspring's.
+
+Each individual maximizes the total utility: 
+
+$$\max \int_0^\infty e^{-\rho t} u(c(t)) e^{nt} dt$$
+
+Since there are $L(0)$ consumers at $t = 0$, the economy 
+as a whole miximizes the following objective. 
+
+$$\max \int_0^\infty e^{-\rho t} u(c(t)) L(t) dt$$
+
+---
+
+## Consumer Behavior: Budget constraint
+
+Each consumer is subject to the following flow budget constraint:
+
+$$c(t) + \dot{s}(t) = \left(r(t) - n\right) s(t)  + w(t)$$
+
+We have $-n s(t)$ in the interest term because of the population growth. Per-person 
+share of the interest income is reduced by the factor of growth rate. 
+
+---
+
+## Consumer Behavior: First-order condition
+
+The representative consumer solves the following maximization problem:
+
+$$\max \int_0^\infty e^{-(\rho - n) t} u(c(t)) dt$$
+subject to 
+
+$$c(t) + \dot{s}(t) = \left(r(t) - n\right) s(t)  + w(t)$$
+
+
+**Problem: Set up the Hamiltonian. (3min)**
+
+---
+
+## Consumer Behavior: Canonical Equations
+
+$$\mathcal H =
+e^{-(\rho - n) t} u(c) + \lambda [(r - n) s + w - c]$$
+
+
+**Problem: Compute the canonical equations. (5min)**
+
+1. $\partial \mathcal H / \partial c = 0$
+2. $\dot{\lambda} = - \partial \mathcal H / \partial s$
+3. $\dot{s} = \partial \mathcal H / \partial \lambda$
+
+---
+
+## Consumer Behavior: Euler equation
+
+**Problem: Derive the Euler equation. (5min)**
+
+$$\begin{aligned}
+  \frac{\dot{c}(t)}{c(t)} = 
+  \frac{r(t) - \rho}{\Theta(c)} 
+\end{aligned}$$
+
+Under the assumption of CRRA utility 
+
+$$u(c) = \frac{c^{1 - \theta} - 1}{1 - \theta},\quad \theta > 0$$
+
+the Euler equation is expressed as
+
+$$\begin{aligned}
+  \frac{\dot{c}(t)}{c(t)} = 
+  \frac{r(t) - \rho}{\theta} 
+\end{aligned}$$
+
+---
+
+## Euler equation for $C/(AL)$
+
+Define the consumption per unit of effective labor:
+
+$$\hat{c} = \frac{c}{A} = \frac{C}{AL}$$
+
+Since $A$ grows exogenously with a constant growth rate $g$, 
+
+$$\frac{\dot{\hat{c}}}{\hat{c}} = \frac{\dot{c}(t)}{c(t)} - g$$
+
+We therefore have 
+
+$$\frac{\dot{\hat{c}}}{\hat{c}} =
+\frac{r(t) - \rho - \theta g}{\theta}$$
+
+
+---
+
+`r section("firms")`
+
+---
+
+## Firm behavior: Production function
+
+Let's describe the behavior of the firms.
+
+This is mostly equivalent to the setup of the Solow model.
+
+The firms have access to the CRS production technology 
+
+$$Y(t) = F(K(t), A(t) L(t)).$$
+
+In per-$AL$ term,
+
+$$\hat{y}(t) = f\left(\hat{k} (t)\right) = 
+\frac{F(K, AL)}{AL}$$
+
+
+---
+
+## Firm behavior: Profit maximization
+
+Rent
+
+$$r(t) + \delta = f'\left( \hat{k}(t) \right)$$
+
+Wage
+
+$$w(t) = A(t) \left[
+  f\left( \hat{k}(t) \right) - k(t) f'\left( \hat{k}(t) \right)
+\right]$$
+
+Wage per effective labor
+
+$$\hat{w}(t) = f\left( \hat{k}(t) \right) - k(t) f'\left( \hat{k}(t) \right)$$
+
+
+---
+
+## Equilibrium: Capital Accumulation
+
+The capital market clearing condition:
+
+$$s(t) L(t) = K(t)$$
+
+
+The flow budget constraint
+
+$$c(t) + \dot{s}(t) = \left(r(t) - n\right) s(t)  + w(t)$$
+
+is transformed into 
+
+$$\frac{\dot{\hat{k}}}{\hat{k}} =
+\frac{\dot s}{s} - g = 
+\frac{f\left(\hat{k}\right) - \hat{c} - (\delta + g + n) \hat{k}}{\hat{k}}$$
+
+---
+
+## Equilibrium: First-order Dynamics
+
+We have the following capital accumulation equation:
+
+$$\dot{\hat{k}} = f\left(\hat{k}\right) - \hat{c} - (\delta + g + n) \hat{k}$$
+
+The dynamics of the Ramsey model is determined by this capital 
+accumulation equation together with 
+the Euler equation:
+
+$$\frac{\dot{\hat{c}}}{\hat{c}} =
+\frac{f'\left(\hat{k}\right) - \delta - \rho - \theta g}{\theta}$$
+
+
+
+

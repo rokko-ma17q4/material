@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ramsey Model: Complete Description</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kenji Sato" />
+    <meta name="date" content="2018-01-15" />
+    <script src="https://use.fontawesome.com/b5f301ecca.js"></script>
+    <link rel="stylesheet" href="../asset/remark-css/style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Ramsey Model: Complete Description
+## Macroeconomics (2017Q4)
+### Kenji Sato
+### 2018-01-15
+
+---
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      Macros: {
+      }
+    }
+  });
+</script>
+
+$$\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\hspace{0pt} #1}}$$
+
+
+
+&lt;div style="margin-top: -2em"&gt;&lt;/div&gt;
+
+## Exogenous variables
+
+Population growth
+
+`$$\dot{L} = n L$$`
+
+Technical growth
+
+`$$\dot{A} = g A$$`
+
+---
+
+class: center, middle
+ # consumers 
+
+
+
+---
+
+## Consumer Behavior: Objective
+
+Consumers act altruistically. They care not only about 
+their own consumption but also about offspring's.
+
+Each individual maximizes the total utility: 
+
+`$$\max \int_0^\infty e^{-\rho t} u(c(t)) e^{nt} dt$$`
+
+Since there are `\(L(0)\)` consumers at `\(t = 0\)`, the economy 
+as a whole miximizes the following objective. 
+
+`$$\max \int_0^\infty e^{-\rho t} u(c(t)) L(t) dt$$`
+
+---
+
+## Consumer Behavior: Budget constraint
+
+Each consumer is subject to the following flow budget constraint:
+
+`$$c(t) + \dot{s}(t) = \left(r(t) - n\right) s(t)  + w(t)$$`
+
+We have `\(-n s(t)\)` in the interest term because of the population growth. Per-person 
+share of the interest income is reduced by the factor of growth rate. 
+
+---
+
+## Consumer Behavior: First-order condition
+
+The representative consumer solves the following maximization problem:
+
+`$$\max \int_0^\infty e^{-(\rho - n) t} u(c(t)) dt$$`
+subject to 
+
+`$$c(t) + \dot{s}(t) = \left(r(t) - n\right) s(t)  + w(t)$$`
+
+
+**Problem: Set up the Hamiltonian. (3min)**
+
+---
+
+## Consumer Behavior: Canonical Equations
+
+`$$\mathcal H =
+e^{-(\rho - n) t} u(c) + \lambda [(r - n) s + w - c]$$`
+
+
+**Problem: Compute the canonical equations. (5min)**
+
+1. `\(\partial \mathcal H / \partial c = 0\)`
+2. `\(\dot{\lambda} = - \partial \mathcal H / \partial s\)`
+3. `\(\dot{s} = \partial \mathcal H / \partial \lambda\)`
+
+---
+
+## Consumer Behavior: Euler equation
+
+**Problem: Derive the Euler equation. (5min)**
+
+`$$\begin{aligned}
+  \frac{\dot{c}(t)}{c(t)} = 
+  \frac{r(t) - \rho}{\Theta(c)} 
+\end{aligned}$$`
+
+Under the assumption of CRRA utility 
+
+`$$u(c) = \frac{c^{1 - \theta} - 1}{1 - \theta},\quad \theta &gt; 0$$`
+
+the Euler equation is expressed as
+
+`$$\begin{aligned}
+  \frac{\dot{c}(t)}{c(t)} = 
+  \frac{r(t) - \rho}{\theta} 
+\end{aligned}$$`
+
+---
+
+## Euler equation for `\(C/(AL)\)`
+
+Define the consumption per unit of effective labor:
+
+`$$\hat{c} = \frac{c}{A} = \frac{C}{AL}$$`
+
+Since `\(A\)` grows exogenously with a constant growth rate `\(g\)`, 
+
+`$$\frac{\dot{\hat{c}}}{\hat{c}} = \frac{\dot{c}(t)}{c(t)} - g$$`
+
+We therefore have 
+
+`$$\frac{\dot{\hat{c}}}{\hat{c}} =
+\frac{r(t) - \rho - \theta g}{\theta}$$`
+
+
+---
+
+class: center, middle
+ # firms 
+
+
+
+---
+
+## Firm behavior: Production function
+
+Let's describe the behavior of the firms.
+
+This is mostly equivalent to the setup of the Solow model.
+
+The firms have access to the CRS production technology 
+
+`$$Y(t) = F(K(t), A(t) L(t)).$$`
+
+In per-`\(AL\)` term,
+
+`$$\hat{y}(t) = f\left(\hat{k} (t)\right) = 
+\frac{F(K, AL)}{AL}$$`
+
+
+---
+
+## Firm behavior: Profit maximization
+
+Rent
+
+`$$r(t) + \delta = f'\left( \hat{k}(t) \right)$$`
+
+Wage
+
+`$$w(t) = A(t) \left[
+  f\left( \hat{k}(t) \right) - k(t) f'\left( \hat{k}(t) \right)
+\right]$$`
+
+Wage per effective labor
+
+`$$\hat{w}(t) = f\left( \hat{k}(t) \right) - k(t) f'\left( \hat{k}(t) \right)$$`
+
+
+---
+
+## Equilibrium: Capital Accumulation
+
+The capital market clearing condition:
+
+`$$s(t) L(t) = K(t)$$`
+
+
+The flow budget constraint
+
+`$$c(t) + \dot{s}(t) = \left(r(t) - n\right) s(t)  + w(t)$$`
+
+is transformed into 
+
+`$$\frac{\dot{\hat{k}}}{\hat{k}} =
+\frac{\dot s}{s} - g = 
+\frac{f\left(\hat{k}\right) - \hat{c} - (\delta + g + n) \hat{k}}{\hat{k}}$$`
+
+---
+
+## Equilibrium: First-order Dynamics
+
+We have the following capital accumulation equation:
+
+`$$\dot{\hat{k}} = f\left(\hat{k}\right) - \hat{c} - (\delta + g + n) \hat{k}$$`
+
+The dynamics of the Ramsey model is determined by this capital 
+accumulation equation together with 
+the Euler equation:
+
+`$$\frac{\dot{\hat{c}}}{\hat{c}} =
+\frac{f'\left(\hat{k}\right) - \delta - \rho - \theta g}{\theta}$$`
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"countIncrementalSlides": false,
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});
+(function() {var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler"); if (!r) return; s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }"; d.head.appendChild(s);})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
