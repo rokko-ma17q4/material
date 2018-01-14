@@ -214,4 +214,114 @@ $$\frac{\dot{\hat{c}}}{\hat{c}} =
 
 
 
+---
+
+## Locus for $\dot{\hat{k}} = 0$
+
+Let's derive the condition under which $\dot{\hat{k}} = 0$.
+
+From the capital accumulation equation,
+
+$$\dot{\hat{k}} = f\left(\hat{k}\right) - \hat{c} - (\delta + g + n) \hat{k},$$
+we obtain
+
+$$\begin{aligned}
+  \dot{\hat{k}} = 0 
+  \Leftrightarrow
+  \hat{c} = f\left(\hat{k}\right) - (\delta + g + n) \hat{k}
+\end{aligned}$$
+
+---
+
+## Regions for $\dot{\hat{k}} > 0$ and $\dot{\hat{k}} < 0$
+
+Moreover,
+
+$$\begin{aligned}
+  \dot{\hat{k}} > 0 
+  \Leftrightarrow
+  \hat{c} < f\left(\hat{k}\right) - (\delta + g + n) \hat{k}
+\end{aligned}$$
+and
+
+$$\begin{aligned}
+  \dot{\hat{k}} < 0 
+  \Leftrightarrow
+  \hat{c} > f\left(\hat{k}\right) - (\delta + g + n) \hat{k}
+\end{aligned}$$
+
+$\dot{\hat{k}}$ is increasing below the $\dot{\hat{k}} = 0$ locus
+and decreasing above the locus.
+
+---
+
+## Regions for $\dot{\hat{k}} > 0$ and $\dot{\hat{k}} < 0$ (cont'd)
+
+You can rewrite these conditions as below:
+
+$$\begin{aligned}
+  \dot{\hat{k}} \gtreqless 0 
+  \Longleftrightarrow
+  f\left(\hat{k}\right) - \hat{c} \gtreqless (\delta + g + n) \hat{k}
+\end{aligned}$$
+
+Capital increases if and only if the investment, 
+$f(\hat{k}) - \hat{c}$, is greater than the break-even level,
+$(\delta + g + n)\hat{k}$.
+
+This condition is exactly what you have already encountered in the 
+analysis of the Solow model.
+
+---
+
+
+## Locus for $\dot{\hat{c}} = 0$
+
+From 
+
+$$\frac{\dot{\hat{c}}}{\hat{c}} =
+\frac{f'\left(\hat{k}\right) - \delta - \rho - \theta g}{\theta}$$
+
+we can derive the locus on which $\dot{\hat{c}} = 0$.
+
+$$\dot{\hat{c}} = 0
+\Longleftrightarrow
+f'\left( \hat{k} \right) = \delta + \rho + \theta g$$
+
+---
+
+## Regions for $\dot{\hat{c}} > 0$ and $\dot{\hat{c}} < 0$
+
+Obviously,
+
+$$\dot{\hat{c}} \gtreqless 0
+\Longleftrightarrow
+f'\left( \hat{k} \right) \gtreqless \delta + \rho + \theta g$$
+
+Since $f'$ is a decreasing function of $\hat{k}$,
+
+$$\dot{\hat{c}} \gtreqless 0
+\Longleftrightarrow
+\hat{k} \lesseqgtr (f')^{-1}\left(\delta + \rho + \theta g\right)$$
+
+Let's define 
+
+$$\hat{k}^* =  (f')^{-1}\left(\delta + \rho + \theta g\right)$$
+
+---
+
+## Regions for $\dot{\hat{c}} > 0$ and $\dot{\hat{c}} < 0$ (cont'd)
+
+Recall $f'(\hat{k}) - \delta = r$. The first-order condition for the 
+consumption is easy to grasp when $g = 0$. 
+
+$$\dot{\hat{c}} \gtreqless 0
+\Longleftrightarrow
+r \gtreqless \rho + \theta\cdot 0$$
+
+When benefit from waiting $\rho$ is greater than utility cost of waiting $\rho$, it's best to defer consuming. Thus, increasing consumption ($\dot{\hat c} > 0$)
+
+When $g \neq 0$, an additional term is needed to adjust
+for technology change. 
+
 
