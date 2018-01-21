@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Discrete-time Models</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kenji Sato" />
+    <meta name="date" content="2018-01-22" />
+    <script src="https://use.fontawesome.com/b5f301ecca.js"></script>
+    <link rel="stylesheet" href="../asset/remark-css/style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Discrete-time Models
+## Macroeconomics (2017Q4)
+### Kenji Sato
+### 2018-01-22
+
+---
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      Macros: {
+      }
+    }
+  });
+</script>
+
+$$\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\hspace{0pt} #1}}$$
+
+
+
+&lt;div style="margin-top: -2.5em"&gt;&lt;/div&gt;
+
+## Continuous-time v. Discrete-time
+
+We have studied continuous-time macroeconomic models. Here is a summary of our modelling strategy: We
+
+1. model economic activities in a very short period of time `\([t, t + \Delta t)\)`
+1. derive a system of differential equation(s) by taking `\(\Delta t \to 0\)`
+1. describe the behavior of the economy diagramatically
+1. observe what the economy looks like in transition and in the limit
+
+---
+
+## Continuous-time v. Discrete-time (cont'd)
+
+Continuous-time models are convenient because solutions are often simpler than discrete-time models.
+
+For instance, see growth rate formulas: 
+
+`$$\begin{aligned}
+  e^{a} e^{b} &amp;= e^{a + b} \\
+  (1 + a)(1 + b) &amp;= 1 + a + b + ab
+\end{aligned}$$`
+
+Also, phase-diagramatic analysis may not work in the discrete-time models.
+
+---
+
+## Continuous-time v. Discrete-time (cont'd)
+
+In spite of the downsides of discrete-time models, many papers use them probably because 
+
+* its interpretation is straightforward;
+* time series analysis works better (note that all available data are in discrete time).
+
+Since analysts can choose whichever is convenient, you also need to understand both schemes.
+
+---
+
+class: center, middle
+ # Discrete-time Models 
+
+
+
+---
+
+background-image: url("discrete-time/discrete-time.001.jpeg")
+
+---
+
+
+background-image: url("discrete-time/discrete-time.002.jpeg")
+
+---
+
+background-image: url("discrete-time/discrete-time.003.jpeg")
+
+---
+
+## Notation and goal
+
+We will use the third choice.
+
+* Time is discrete and extends from `\(0\)` to `\(\infty\)`.
+* Period between time points `\(t - 1\)` and `\(t\)` is called "Period `\(t\)`".
+* For stock variables, notation like `\(K_t\)` denotes the end-of-period balance.
+
+We need to find a rule that governs the development of 
+
+`$$K_0, K_1, \dots, \quad Y_1, Y_2, \dots$$`
+
+etc. Let's first study the discrete-time Solow model.
+
+
+---
+
+## Exogenous growth
+
+Let's suppose that knowledge `\(A\)` and labor `\(L\)` grow exogenously. In discrete-time models, 
+this assumption is expressed as
+
+`$$\begin{aligned}
+  A_t &amp;= (1 + g) A_{t-1}\\
+  L_t &amp;= (1 + n) L_{t-1}, \qquad t = 1, 2, \dots
+\end{aligned}$$`
+
+---
+
+## Production and investment
+
+The firms produce output, employing what is available at the beginning of the period, or
+equivalently, what was available at the end of the previous period.
+
+`$$Y_t = F(K_{t-1}, A_{t-1} L_{t-1})$$`
+
+`\(F\)` is a CRS production function and `\(Y\)` denotes aggregate production.
+
+We assume a closed free economy with a constant saving rate
+
+`$$S_t = I_t = sY_t$$`
+
+
+---
+
+## Capital Accumulation
+
+Net investment `\(K_{t} - K_{t-1}\)` is by definition
+
+`$$\begin{aligned}
+K_t - K_{t-1} 
+  &amp;= I_t - \delta K_{t-1}\\
+  &amp;= sY_t - \delta K_{t-1}\\
+  &amp;= sF(K_{t-1}, A_{t-1} L_{t-1}) - \delta K_{t-1}
+\end{aligned}$$`
+
+where `\(\delta\)` is the depreciation rate. By rearranging,
+
+`$$K_t = sF(K_{t-1}, A_{t-1} L_{t-1}) + (1 - \delta) K_{t-1}$$`
+
+
+
+---
+
+## Effective labor
+
+Define
+
+`$$\hat k_t = \frac{K_t}{A_t L_t}$$` 
+
+and 
+
+`$$\hat{y}_t = f\left( \hat k_t \right) = F\left(\hat{k}_t, 1    \right)$$`
+
+---
+
+## Capital accumulation 
+
+Divide by `\(A_{t-1} L_{t-1}\)` both sides of
+`$$K_t = sF(K_{t-1}, A_{t-1} L_{t-1}) + (1 - \delta) K_{t-1}$$`
+
+The left-hand side 
+
+`$$\frac{K_t}{A_{t-1} L_{t-1}}
+=
+\frac{K_t}{A_{t} L_{t}} \frac{A_{t} L_{t}}{A_{t-1} L_{t-1}}
+=
+\hat{k}_t (1 + g)(1 + n)$$`
+
+The right hand side
+
+`$$\frac{sF(K_{t-1}, A_{t-1} L_{t-1}) + (1 - \delta) K_{t-1}}{A_{t-1} L_{t-1}}
+= sf\left(\hat{k}_{t-1}\right) + (1 - \delta) \hat{k}_{t-1}$$`
+
+---
+
+## Capital accumulation
+
+We obtain
+
+`$$\hat{k}_t
+= \frac{sf\left(\hat{k}_{t-1}\right) + (1 - \delta) \hat{k}_{t-1}}{(1+g)(1+n)}$$`
+
+Or
+
+`$$\hat{k}_t - \hat{k}_{t-1}
+= \frac{sf\left(\hat{k}_{t-1}\right) - (\delta + g + n + gn) \hat{k}_{t-1}}{(1+g)(1+n)}$$`
+
+
+---
+
+## Break-even investment
+
+`$$\hat{k}_t &gt; \hat{k}_{t-1} \Leftrightarrow sf\left(\hat{k}_{t-1}\right) &gt; (\delta + g + n + gn) \hat{k}_{t-1}$$`
+
+`$$\hat{k}_t &lt; \hat{k}_{t-1} \Leftrightarrow sf\left(\hat{k}_{t-1}\right) &lt; (\delta + g + n + gn) \hat{k}_{t-1}$$`
+
+
+Break-even investment in discrete-time model is `\((\delta + g + n + gn)\hat{k}\)`, which is slightly 
+larger than the continuous-time counterpart. 
+
+This difference comes from the difference between nominal and effective rates. When `\(g\)` and `\(n\)` are very small,
+then we can ignore the difference: 
+
+`$$\delta + g + n + gn \simeq \delta + g + n$$`
+
+---
+
+## Dynamics
+
+Analysis analogous to continuous-time Solow model may not work since 
+we haven't ruled out a scenario that the sign conditions alternate
+
+`$$k_{t-1} - k_t &lt; 0, \quad k_t - k_{t+1} &gt;0 , \quad k_{t+1} - k_{t+2} &lt; 0, \dots$$`
+
+This doesn't happen in continuous-time models in which stock variables develop continuously.
+
+In discrete-time models, the following "staircase" diagram might work better.
+
+---
+
+## Policy function
+
+&lt;img src="discrete-time/discrete-time.004.jpeg" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Policy function
+
+&lt;img src="discrete-time/discrete-time.005.jpeg" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 45 degree line
+
+&lt;img src="discrete-time/discrete-time.006.jpeg" style="display: block; margin: auto;" /&gt;
+
+---
+
+## `\(t = 1 \to 2\)`
+
+&lt;img src="discrete-time/discrete-time.007.jpeg" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 45 degree line
+
+&lt;img src="discrete-time/discrete-time.008.jpeg" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## Continue this argument to get convergence
+
+&lt;img src="discrete-time/discrete-time.009.jpeg" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## Steady state
+
+We get convergence to the steady state value
+
+`$$\hat{k}_t \to \hat{k}^*$$`
+
+
+In the steady state, balanced growth is achieved:
+
+`$$K_t = A_t L_t \hat{k}^*$$`
+
+`$$Y_t = A_t L_t f\left( \hat{k}^* \right)$$`
+
+
+Exercise: Verify the same convergence from `\(\hat{k}_0 &gt; \hat k^*\)`.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"countIncrementalSlides": false,
+"highlightLines": true,
+"highlightStyle": "github"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});
+(function() {var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler"); if (!r) return; s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }"; d.head.appendChild(s);})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
