@@ -260,8 +260,8 @@ Initial $c_1$ is determined by the terminal condition $\hat{k}_t \to \hat{k}^*$.
 Assume $\delta = 1$, $g = 0$, $\theta = 1$. The conditions simplify to
 
 $$\begin{aligned}
-  \hat{k}_t &= f\left( \hat{k}_{t-1} \right) - \hat{c}_t \\
-  \frac{\hat{c}_{t+1}}{\hat{c}_{t}} &= \frac{f'\left( \hat{k}_t \right)}{ 1 + \rho}
+  \hat{k}_t = f\left( \hat{k}_{t-1} \right) - \hat{c}_t \quad \text{and} \quad
+  \frac{\hat{c}_{t+1}}{\hat{c}_{t}} = \frac{f'\left( \hat{k}_t \right)}{ 1 + \rho}
 \end{aligned}$$
 
 The system is of second order
@@ -281,11 +281,105 @@ condition to determine the full dynamics.
 
 ---
 
-## Optimal Dynamics
+## Dynamic Programming
 
-Under normal circumstances, we have an increasing policy function $\hat{k}_t \mapsto \hat{k}_{t+1}$. (See Dechert and Nishimura, 1983)
+For discrete-time models, the Euler equation is not too useful. 
+Dynamic programming approach is often more powerful. 
 
-```{r, echo=FALSE, out.height=410}
+Define the value function (assume $g = 0$ for simplicity)
+
+$$\begin{aligned}
+  V(k_0) &= \max \sum_{t = 1}^\infty \beta^{t - 1} u(c_t)\\
+        &\text{s.t.}\quad 
+        c_t
+  =
+  \phi \left( k_{t-1} \right) - k_{t}
+\end{aligned},$$
+
+where $\phi\left( k_{t-1} \right) = f\left(k_{t-1}\right) + \left(1-\delta\right)k_{t-1}$
+and $\beta = \left( \frac{1}{1 + \rho} \right)$
+
+---
+
+## Dynamic Programming (cont'd)
+
+Namely,
+
+$$\begin{aligned}
+  V(k_0) = \max \sum_{t = 1}^\infty \beta^{t - 1} 
+     u\left(
+       \phi \left( k_{t-1} \right) - k_{t}
+    \right)
+\end{aligned},$$
+
+It is known that the value function satisfies the following functional equation,  known as Bellman equation: 
+
+$$V(k_{t-1}) = \max_{k_t} \left[
+    u\left(
+       \phi \left( k_{t-1} \right) - k_{t}
+    \right) + \beta V(k_t)
+    \right].$$
+
+Optimal path $k_t^*$ satisfies
+
+$$V(k_{t-1}^*) = u\left(
+       \phi \left( k_{t-1}^* \right) - k_{t}^*
+    \right) + \beta V(k_t^*)$$
+    
+---
+
+## Dynamic Programming (cont'd)
+
+If you can find the value function $V$, you can find the policy function $k_{t} = h(k_{t-1})$
+by solving the following maximization problem: 
+
+Given $k_{t-1}$, find $k_t$ that maximizes
+
+$$u\left(
+       \phi \left( k_{t-1} \right) - k_{t}
+    \right) + \beta V(k_t)$$
+    
+---
+
+## Guess and verify
+
+One way to find $V$ is the so-called "guess and verify" approach. 
+
+First, we make a guess about the function form of $V$, for example,
+$V(x) = a + b\ln x$ and then compute the candidate for the optimal policy $h$. 
+If there is parameters for which the policy satisfies the Bellman equation
+
+$$V(x) = u\left(
+       \phi \left( x \right) - h(x)
+    \right) + \beta V(h(x))$$
+
+and a certain terminal condition (convergence to steady state would suffice), 
+then you know you made a correct guess. 
+
+---
+
+## Value function iteration
+
+Obviously, guess-and-verify approach does not always work.
+
+The following procedure is known to converge to the value function: 
+Start from a good guess of $V$, $V_0$, then compute $V_1, V_2, \dots$, by 
+
+$$\begin{aligned}
+V_1(x) &= \max_{y} \left[u(\phi (x) - y) + \beta V_0(y)\right]\\
+V_2(x) &= \max_{y} \left[u(\phi (x) - y) + \beta V_1(y)\right]\\
+       &\vdots
+\end{aligned}$$
+
+It is known that $V_n$ converges to the true $V$. See, for example, Stokey and Lucas (1989).
+
+---
+
+## Monotonicity
+
+The one-sector Ramsey model, under normal assumptions, has an increasing policy function $\hat{k}_{t-1} \mapsto \hat{k}_{t}$. (See Dechert and Nishimura, 1983)
+
+```{r, echo=FALSE, out.height=400}
 knitr::include_graphics("figure.jpeg")
 ```
 
